@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block css_files %}
+{% endblock %}
+
+
+{% block page_tittle %}
+    Cast Details
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="container bubble">
+        <div class="row">
+            <div class="col mobile-mt">
+
+                <div class="card mb-3 mt-4">
+                    <h5 class="card-title text-center mt-3 ml-2 fw-bold display-4">{{ moviecast.first_name }} {{ moviecast.last_name }}</h5>
+                    <div class="row">
+                        <div class="col-8">
+                            <img class="card-img-top mt-3 ml-3" src="{{ moviecast.image.url }}" alt="Card image cap"
+                                 height="500">
+                        </div>
+                        <div class="col-4 m-auto">
+
+                            <p class="card-text font-weight-bold details mt-5">Birth Date: <span class="insidedetails">{{ moviecast.date_of_birth }}</span></p>
+
+
+                            <p class="card-text font-weight-bold details mt-5">Nationality: <span class="insidedetails">{{ moviecast.nationality }}</span></p>
+
+
+
+                            {% if moviecast.gender == "M" %}
+                                <p class="card-text font-weight-bold details mt-5">Gender: <span class="insidedetails">Male</span></p>
+                            {% endif %}
+                            {% if moviecast.nationality == "F" %}
+                                <p class="card-text font-weight-bold details mt-5">Gender: <span class="insidedetails">Female</span></p>
+                            {% endif %}
+
+
+                            {% if moviecast.duty_type == "1" %}
+                                <p class="card-text font-weight-bold details mt-5">Duty: <span class="insidedetails">Görevli</span></p>
+                            {% endif %}
+                            {% if moviecast.duty_type == "2" %}
+                                <p class="card-text font-weight-bold details mt-5">Duty: <span class="insidedetails">Oyuncu</span></p>
+                            {% endif %}
+                            {% if moviecast.duty_type == "3" %}
+                                <p class="card-text font-weight-bold details mt-5">Duty: <span class="insidedetails">Yönetmen</span></p>
+                            {% endif %}
+                            {% if moviecast.duty_type == "4" %}
+                                <p class="card-text font-weight-bold details mt-5">Duty: <span class="insidedetails">Senarist</span></p>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ moviecast.biography }}</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

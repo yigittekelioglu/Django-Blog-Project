@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block css_files %}
+{% endblock %}
+
+
+{% block page_tittle %}
+    Details
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="container bubble">
+        <div class="row">
+            <div class="col mobile-mt">
+
+                <div class="card mb-3 mt-4">
+                    <h5 class="card-title text-center mt-3 ml-2 fw-bold display-4">{{ blog.bloger_title }}</h5>
+                    <img class="card-img-top mt-3" src="{{ blog.bloger_pic.url }}" alt="Card image cap" height="450">
+                    <div class="card-body">
+                        <p class="card-text">{{ blog.bloger_description }}</p>
+                        <p class="card-text"><small class="text-muted">{{ blog.bloger_date }}</small></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

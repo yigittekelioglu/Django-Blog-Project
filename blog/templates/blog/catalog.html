@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick-theme.min.css' %}"/>
+
+{% endblock %}
+
+
+{% block page_tittle %}
+
+    Catalog
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container freepage">
+        <div class="row">
+            <div class="col mobile-mt">
+
+
+                {% for product in products2 %}
+                    <a class="linkler" href="/moviedetails/{{ product.movie_slug }}" >
+                        <div class="card mb-3 mt-3" >
+                            <div class="card-body " >
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img src="{{ product.movie_pic.url }}" class="card-img" alt="..." height="200">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <h1>{{ product.movie_title }}</h1></h5>
+                                            <p class="card-text">{{ product.movie_description|truncatechars:150 }} </p>
+                                            <p class="card-text"><small class="text-muted">{{ item.movie_date }}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+
+                {% for product in products %}
+                    <a class="linkler" href="/details/{{ product.bloger_slug }}" >
+                        <div class="card mb-3 mt-3" >
+                            <div class="card-body " >
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img src="{{ product.bloger_pic.url }}" class="card-img" alt="..." height="200">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <h1>{{ product.bloger_title }}</h1></h5>
+                                            <p class="card-text">{{ product.bloger_description|truncatechars:150 }} </p>
+                                            <p class="card-text"><small class="text-muted">{{ item.bloger_date }}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

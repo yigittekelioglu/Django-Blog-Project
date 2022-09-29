@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block css_files %}
+{% endblock %}
+
+
+{% block page_tittle %}
+    Movie Details
+{% endblock %}
+
+{% block content %}
+
+    <div class="container bubble">
+        <div class="row">
+            <div class="col mobile-mt">
+
+                <div class="card mb-3 mt-4">
+                    <h5 class="card-title text-center mt-3 ml-2 fw-bold display-4">{{ movie.movie_title }}</h5>
+                    <div class="row">
+                        <div class="col-8">
+                            <img class="card-img-top mt-3 ml-3" src="{{ movie.movie_pic.url }}" alt="Card image cap" height="450">
+                        </div>
+                        <div class="col-4 m-auto">
+                            <p class="card-text font-weight-bold details mt-5">IMDB: <span class="insidedetails">{{ movie.mark }}</span> </p>
+
+                            <p class="card-text font-weight-bold details mt-5">Budget: <span class="insidedetails">{{ movie.movie_budget }} $ </span></p>
+
+                            <div class="details mt-5">
+                            <p class="card-text font-weight-bold ">Movie Type: </p>
+                            {% for foo in movie.movie_types.all %}
+                                <p class="card-text">{{ foo.type }}</p>
+                            {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ movie.movie_description }}</p>
+
+                    </div>
+                </div>
+
+                <div class="card-deck">
+                    <div class="row">
+                        {% for person in movie.cast_people.all %}
+                            <div class="col-3">
+                                <a href="/castdetails/{{ person.castslug }}" class="linkler">
+                                    <div class="card mt-3">
+                                        <img class="card-img-top" src="{{ person.image.url }}" alt="Card image cap"
+                                             height="200">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ person.first_name }} {{ person.last_name }}</h5>
+                                            <p class="card-text">{{ person.biography|truncatechars:80 }}</p>
+                                            {% if person.duty_type == "1" %}
+                                                <p class="card-text"><small
+                                                        class="text-muted">Görevli</small>
+                                                </p>
+                                            {% endif %}
+                                            {% if person.duty_type == "2" %}
+                                                <p class="card-text"><small class="text-muted">Oyuncu</small>
+                                                </p>
+                                            {% endif %}
+                                            {% if person.duty_type == "3" %}
+                                                <p class="card-text"><small class="text-muted">Yönetmen</small>
+                                                </p>
+                                            {% endif %}
+                                            {% if person.duty_type == "4" %}
+                                                <p class="card-text"><small class="text-muted">Senarist</small>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
