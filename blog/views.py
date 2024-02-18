@@ -1,13 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from blog.models import Movie, Bloger, movie_cast
+from blog.models import Movie, Bloger, movie_cast, Product
 import random
 
 
 
 def index(request):
-
+    sliders = Product.objects.all()
     news = Bloger.objects.filter(bloger_types__type="News")
     sport = Bloger.objects.filter(bloger_types__type="Sport")
     travel = Bloger.objects.filter(bloger_types__type="Travel")
@@ -58,6 +58,7 @@ def index(request):
         "recent_travel": recent_travel,
         "recent_technology": recent_technology,
         "recent_movie": recent_movie,
+        "sliders": sliders
         #"random_new": random_new,
         # "random_sport": random_sport,
         # "random_travel": random_travel,

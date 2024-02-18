@@ -147,3 +147,19 @@ class WebsiteSettings(models.Model):
     class Meta:
         verbose_name = "Web Sitesi Ayarı"
         verbose_name_plural = "Web Sitesi Ayarları"
+
+    def __str__(self):
+        return self.settingname
+
+
+class Product(models.Model):
+    product_title = models.CharField(max_length=30, null=True, blank=True)
+
+class ImagesGal(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30, null=True, blank=True)
+    image = models.ImageField(upload_to="images", null=True, blank=True, )
+
+    def __str__(self):
+        return self.title or "Unnamed Image"
+

@@ -18,10 +18,10 @@ class Profile(AbstractUser):
         ('male', 'Male'),
         ('female', 'Female'),
     )
-
+#name email pass pass
     birthdate = models.DateField(null=True, verbose_name='Doğum Tarihi')
     gender = models.CharField(max_length=10, choices=gender, null=True, blank=False, verbose_name='Cinsiyet')
-
+#adres gender birthdate payment (name surname email nickname password) sepet  favori telefon sipariş
     REQUIRED_FIELDS = ['birthdate', 'gender']
 
     def __str__(self):
@@ -30,7 +30,4 @@ class Profile(AbstractUser):
     class Meta:
         verbose_name = "Kullanıcı"
         verbose_name_plural = "Kullanıcılar"
-
-
-
 

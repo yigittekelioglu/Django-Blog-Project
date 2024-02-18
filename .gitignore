@@ -150,4 +150,5 @@ _notes/
 /activate
 /ipython_setting_django_env.txt
 .idea/
-db.sqlite3
+
+#db.sqlite3
